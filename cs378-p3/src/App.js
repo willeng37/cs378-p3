@@ -1,13 +1,15 @@
 import './App.css';
+import { useState } from 'react';
 import TableDisplay from './TableDisplay';
+import AppButtons from './AppButtons';
 
 function App() {
+  const [city, setCity] = useState("Austin");
+
   // City buttons
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-
+    <div>
+      <AppButtons />
       <TableDisplay />
     </div>
   );
