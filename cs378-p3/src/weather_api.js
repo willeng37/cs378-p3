@@ -1,6 +1,6 @@
 let weather_api = "https://api.open-meteo.com/v1/forecast";
 let geo_api = "https://geocoding-api.open-meteo.com/v1/search";
-let test_api = "https://api.open-meteo.com/v1/forecast?latitude=30.27&longitude=-97.74&hourly=temperature_2m";
+let test_api = "https://api.open-meteo.com/v1/forecast?latitude=30.27&longitude=-97.74&hourly=temperature_2m&temperature_unit=fahrenheit";
 
 export async function fetchWeatherAPI(params) {
     try {
@@ -34,12 +34,13 @@ export async function fetchGeoAPI(cityName) {
         // Error: could not reach API
         return (
             <p>
-                Error: fetchAPI failed.
+                Error: fetchGeoAPI failed.
             </p>
         );
     }
 }
 
 export async function fetchAPI(params) {
-    
+    // const geo_val = fetchGeoAPI(params);
+    return await fetchWeatherAPI(null);
 }

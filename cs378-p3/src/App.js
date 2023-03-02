@@ -9,8 +9,8 @@ function App() {
   // City buttons
   return (
     <div>
-      <AppButtons />
-      <TableDisplay />
+      <AppButtons city={city} setCity={setCity} />
+      <TableDisplay city={city} />
     </div>
   );
 }

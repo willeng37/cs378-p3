@@ -1,13 +1,16 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 const initialList = [ "Austin", "Dallas", "Houston" ];
 
-export default function AppButtons() {
+export default function AppButtons({ city, setCity }) {
     // Handle input
     const newCityRef = useRef("");
     // Draws and maps the buttons onto the screen
     const [list, setList] = useState(initialList);
-    const [city, setCity] = useState("Austin");
+    // Callback on changing the city
+    const handleCityChange = useCallback(e => {
+        setCity(e.target.key);
+    }, [setCity]);
 
     function onAddButtonClick(e) {
         // Deals with adding a city when the button is pressed
@@ -16,14 +19,10 @@ export default function AppButtons() {
         ]);
     }
 
-    function setCityButton(e) {
-        setCity(e.target.key);
-    }
-
     function CityButtons() {
         return (
             list.map((city) =>
-                <button key={city} onClick={setCityButton}>{city}</button>
+                <button key={city} onClick={handleCityChange}>{city}</button>
             )
         );
     }
